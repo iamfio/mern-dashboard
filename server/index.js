@@ -9,8 +9,12 @@ import clientRoutes from './routes/client'
 import generalRoutes from './routes/general'
 import managementRoutes from './routes/management'
 import salesRoutes from './routes/sales'
-import User from './models/User.js'
-import { dataUser } from './data/index'
+
+// Data Imports
+import User from './models/User'
+import Product from './models/Product'
+import ProductStat from './models/ProductStat'
+import { dataUser, dataProduct, dataProductStat } from './data/index'
 
 // CONFIGS
 dotenv.config()
@@ -44,5 +48,7 @@ mongoose
 
     // ONLY ADD ONE TIME
     // User.insertMany(dataUser)
+    // Product.insertMany(dataProduct)
+    // ProductStat.insertMany(dataProductStat)
   })
   .catch((error) => console.log(`${error}: MONGOOSE CONNECTION ERRROR`))
