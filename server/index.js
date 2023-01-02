@@ -9,7 +9,8 @@ import clientRoutes from './routes/client'
 import generalRoutes from './routes/general'
 import managementRoutes from './routes/management'
 import salesRoutes from './routes/sales'
-
+import User from './models/User.js'
+import { dataUser } from './data/index'
 
 // CONFIGS
 dotenv.config()
@@ -27,3 +28,21 @@ app.use('/client', clientRoutes)
 app.use('/general', generalRoutes)
 app.use('/management', managementRoutes)
 app.use('/sales', salesRoutes)
+
+// MONGOOOSE
+const PORT = process.env.PORT || 9000
+mongoose.set('strictQuery', false)
+mongoose
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    app.listen(PORT, () =>
+      console.log(`Server is running on http://localhost:${PORT}`)
+    )
+
+    // ONLY ADD ONE TIME
+    // User.insertMany(dataUser)
+  })
+  .catch((error) => console.log(`${error}: MONGOOSE CONNECTION ERRROR`))
