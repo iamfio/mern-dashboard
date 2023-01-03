@@ -14,7 +14,8 @@ import salesRoutes from './routes/sales'
 import User from './models/User'
 import Product from './models/Product'
 import ProductStat from './models/ProductStat'
-import { dataUser, dataProduct, dataProductStat } from './data/index'
+import Transaction from './models/Transaction'
+import { dataUser, dataProduct, dataProductStat, dataTransaction } from './data/index'
 
 // CONFIGS
 dotenv.config()
@@ -50,5 +51,6 @@ mongoose
     // User.insertMany(dataUser)
     // Product.insertMany(dataProduct)
     // ProductStat.insertMany(dataProductStat)
+    // Transaction.insertMany(dataTransaction)
   })
   .catch((error) => console.log(`${error}: MONGOOSE CONNECTION ERRROR`))
