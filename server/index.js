@@ -15,7 +15,9 @@ import User from './models/User'
 import Product from './models/Product'
 import ProductStat from './models/ProductStat'
 import Transaction from './models/Transaction'
-import { dataUser, dataProduct, dataProductStat, dataTransaction } from './data/index'
+import OverallStat from './models/OverallStat'
+import { dataProduct, dataProductStat, dataTransaction, dataOverallStat } from './data/index'
+import {dataUser } from './data/dataUser'
 
 // CONFIGS
 dotenv.config()
@@ -48,9 +50,11 @@ mongoose
     )
 
     // ONLY ADD ONE TIME
+    // TODO: User import issue: country field is not imported! WhY?
     // User.insertMany(dataUser)
     // Product.insertMany(dataProduct)
     // ProductStat.insertMany(dataProductStat)
     // Transaction.insertMany(dataTransaction)
+    // OverallStat.insertMany(dataOverallStat)
   })
   .catch((error) => console.log(`${error}: MONGOOSE CONNECTION ERRROR`))
